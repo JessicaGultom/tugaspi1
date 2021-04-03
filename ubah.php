@@ -1,3 +1,36 @@
+<?php
+include('koneksi.php');
+
+$id = $_GET['id'];
+$sql = "SELECT * FROM dapen WHERE id=$id";
+$tampil = mysqli_query($conn, $sql);
+
+
+if (isset($_POST['tambah'])) {
+    $nama = $_POST['nama'];
+    $jenkel = $_POST['jenkel'];
+    $agama = $_POST['agama'];
+
+    $sql = "UPDATE dapen SET 
+                            nama='$nama',
+                            jenkel='$jenkel',
+                            agama='$agama' WHERE id=$id
+    
+     ";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_affected_rows($conn) > 0) {
+        echo "<script> alert('data berhasil diubah');
+        document.location.href='index.php'; 
+        </script>";
+    } else {
+        echo mysqli_error($conn);
+    }
+}
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 

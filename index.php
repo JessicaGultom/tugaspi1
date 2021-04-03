@@ -1,6 +1,7 @@
 <?php
 include('koneksi.php');
-
+$sql = "SELECT * FROM dapen";
+$result = mysqli_query($conn, $sql);
 ?>
 
 <!DOCTYPE html>

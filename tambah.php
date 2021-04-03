@@ -1,3 +1,25 @@
+<?php
+include('koneksi.php');
+
+if (isset($_POST['tambah'])) {
+    $nama = $_POST['nama'];
+    $jenkel = $_POST['jenkel'];
+    $agama = $_POST['agama'];
+
+    $sql = "INSERT INTO dapen (nama, jenkel, agama) VALUES ('$nama', '$jenkel', '$agama') ";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_affected_rows($conn) > 0) {
+        echo "<script> alert('data berhasil ditambah');
+        document.location.href='index.php'; 
+        </script>";
+    } else {
+        echo mysqli_error($conn);
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
